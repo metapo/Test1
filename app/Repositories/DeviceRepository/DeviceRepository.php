@@ -10,10 +10,9 @@ class DeviceRepository implements DeviceRepositoryInterface
 {
     public function saveAll(array $devices)
     {
-        /** @var Device $device */
+        /** @var array $device */
         foreach ($devices as $device) {
-            //save device in Device model
-//            Device::updateOrCreate(
+            Device::create($device);
         }
     }
 }

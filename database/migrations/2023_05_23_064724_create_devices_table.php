@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('devices', function (Blueprint $table) {
             $table->id();
             $table->string('ip_address')->index();
-            $table->string('mac');
-            $table->string('device_name')->nullable();
+            $table->string('mac')->index();
+            $table->string('device_name')->nullable()->index();
             $table->json('open_ports')->nullable();
             $table->timestamps();
         });

@@ -5,8 +5,9 @@ namespace App\Console\Commands;
 use App\Repositories\DeviceRepository\DeviceRepositoryInterface;
 use App\Services\DeviceScanner\DeviceScannerFactory;
 use Illuminate\Console\Command;
+use Illuminate\Contracts\Console\Isolatable;
 
-class ScanDeviceCommand extends Command
+class ScanDeviceCommand extends Command implements Isolatable
 {
     /**
      * The name and signature of the console command.
