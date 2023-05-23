@@ -8,7 +8,7 @@ use Illuminate\Support\Collection;
 
 class DeviceRepository implements DeviceRepositoryInterface
 {
-    public function saveDevices(Collection $devices)
+    public function saveAll(array $devices)
     {
         /** @var Device $device */
         foreach ($devices as $device) {

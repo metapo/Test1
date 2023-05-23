@@ -6,5 +6,5 @@ use Illuminate\Support\Collection;
 
 interface DeviceRepositoryInterface
 {
-    public function saveDevices(Collection $devices);
+    public function saveAll(array $devices);
 }
