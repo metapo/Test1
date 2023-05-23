@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Repositories\DeviceRepository\DeviceRepositoryInterface;
 use App\Services\DeviceScanner\DeviceScannerFactory;
 use Illuminate\Console\Command;
 
@@ -21,6 +22,11 @@ class ScanDeviceCommand extends Command
      */
     protected $description = 'scanning devices in local network and storing data';
 
+    public function __construct(protected DeviceRepositoryInterface $deviceRepository)
+    {
+        parent::__construct();
+    }
+
     /**
      * Execute the console command.
      */
@@ -28,7 +34,10 @@ class ScanDeviceCommand extends Command
     {
         $scannerFactory = new DeviceScannerFactory();
         $scanner = $scannerFactory->create();
-        $scanner->scan();
+        $devices = $scanner->scan();
+
+        $this->deviceRepository->saveAll($devices);
+
 
     }
 }

@@ -11,7 +11,7 @@ class DeviceScannerFactory
     {
         switch (config('device-scanner.driver')) {
             case 'nmap':
-                return new NmapDeviceScanner(new DeviceRepository());
+                return new NmapDeviceScanner();
             default:
                 throw new \InvalidArgumentException('Invalid scanner type.');
         }

@@ -8,18 +8,11 @@ use App\Repositories\DeviceRepository\DeviceRepositoryInterface;
 
 class NmapDeviceScanner implements ScannerInterface
 {
-    public function __construct(protected DeviceRepositoryInterface $deviceRepository)
+    public function __construct()
     {}
 
     public function scan(): array
     {
-        $devices = $this->retrieveDevices();
-        $this->deviceRepository->saveAll($devices);
-    }
-
-    private function retrieveDevices(): array
-    {
-        // Return list of devices as an array
         return [
             [
                 'ip_address' => '192.168.1.1',
@@ -35,4 +28,6 @@ class NmapDeviceScanner implements ScannerInterface
             ],
         ];
     }
+
+
 }
