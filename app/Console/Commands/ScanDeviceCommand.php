@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Services\DeviceScanner\DeviceScannerFactory;
 use Illuminate\Console\Command;
 
 class ScanDeviceCommand extends Command
@@ -11,20 +12,23 @@ class ScanDeviceCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'app:scan-device-command';
+    protected $signature = 'scan:devices';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'scanning devices in local network and storing data';
 
     /**
      * Execute the console command.
      */
     public function handle()
     {
-        //
+        $scannerFactory = new DeviceScannerFactory();
+        $scanner = $scannerFactory->create();
+        $scanner->scan();
+
     }
 }

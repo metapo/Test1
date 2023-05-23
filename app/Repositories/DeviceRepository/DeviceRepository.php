@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Device\Repositories;
+namespace App\Repositories\DeviceRepository;
 
 use App\Models\Device;
-use App\Repositories\Device\DeviceRepositoryInterface;
+
 use Illuminate\Support\Collection;
 
 class DeviceRepository implements DeviceRepositoryInterface

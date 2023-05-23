@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Device;
+namespace App\Repositories\DeviceRepository;
 
 use Illuminate\Support\Collection;
 
