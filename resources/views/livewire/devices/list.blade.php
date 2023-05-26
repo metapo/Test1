@@ -1,5 +1,33 @@
 <div class="row">
     <div class="col">
+        <div class="my-3">
+            <form action="{{route('home')}}" method="get">
+                @csrf
+                <div class="btn-toolbar justify-content-between col-6 " role="toolbar" aria-label="Toolbar with button groups">
+                    <div class="btn-group" role="toolbar" aria-label="First group">
+                        <div class="input-group-text" id="btnGroupAddon">Filter By</div>
+                        <div class="btn-group" role="toolbar" aria-label="Basic radio toggle button group">
+                            <input type="radio" value="ip_address" class="btn-check" id="btnradioip" autocomplete="off" name="type" {{ request('type') == 'ip_address' ? 'checked' : '' }}>
+                            <label class="btn btn-outline-primary" for="btnradioip">IP Address</label>
+
+                            <input type="radio" value="mac" class="btn-check" id="btnradiomac" autocomplete="off" name="type" {{ request('type') == 'mac' ? 'checked' : '' }}>
+                            <label class="btn btn-outline-primary" for="btnradiomac">MAC</label>
+
+                            <input type="radio" value="device_name" class="btn-check" id="btnradiodevicename" autocomplete="off" name="type" {{ request('type') == 'device_name' ? 'checked' : '' }}>
+                            <label class="btn btn-outline-primary" for="btnradiodevicename">Device Name</label>
+
+                            <input type="radio" value="open_ports" class="btn-check" id="btnradioopenoprt" autocomplete="off" name="type" {{ request('type') == 'open_ports' ? 'checked' : '' }}>
+                            <label class="btn btn-outline-primary" for="btnradioopenoprt">Open Ports</label>
+                        </div>
+                    </div>
+                    <div class="input-group my-3">
+                        <input type="text" class="form-control" placeholder="Type here" aria-label="Type here" aria-describedby="btnGroupAddon" name="keyword">
+                        <button type="submit" class="btn btn-success">Filter</button>
+                        <a class="btn btn-light" href="{{ route('home') }}">Reset Filter</a>
+                    </div>
+                </div>
+            </form>
+        </div>
         <table class="table table-striped table-bordered">
             <thead>
             <tr>

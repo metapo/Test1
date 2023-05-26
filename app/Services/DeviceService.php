@@ -22,8 +22,12 @@ class DeviceService
 
     public function filterDevices($filters): self
     {
-        $this->loadAllDevices();
-        $this->devices = $this->deviceRepository->filter($this->devices, $filters);
+        $filters = $this->prepareFilters($filters);
+        if ($filters) {
+            $this->loadAllDevices();
+            $this->devices = $this->deviceRepository->filter($this->devices, $filters);
+        }
+
         return $this;
     }
 
@@ -38,5 +42,17 @@ class DeviceService
     {
         $this->loadAllDevices();
         return $this->deviceRepository->paginate($this->devices, $perPage);
+    }
+
+    private function prepareFilters($filters)
+    {
+        if (key_exists('type', $filters) and  key_exists('keyword', $filters)) {
+            if (!empty($filters['keyword']) and !empty($filters['type'])) {
+                if (in_array($filters['type'], ['ip_address', 'mac', 'device_name', 'open_ports'])) {
+                    return [$filters['type'] => $filters['keyword']];
+                }
+            }
+        }
+        return [];
     }
 }
