@@ -8,8 +8,7 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
-    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-icons.css') }}">
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -24,15 +23,20 @@
             }
         }
     </style>
+    @yield('livewireStyle')
     @yield('style')
 </head>
 <body>
 @include('partials.header')
 
-<div class="container">
+<div class="container mt-5">
     @yield('content')
 </div>
 
 @include('partials.footer')
+
+<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+@yield('livewireScripts')
+@yield('scripts')
 </body>
 </html>

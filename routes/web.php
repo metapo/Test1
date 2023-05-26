@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\DeviceController;
+use App\Http\Livewire\DeviceList;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [DeviceController::class, 'index'])->middleware('auth')->name('home');
+Route::get('/', DeviceList::class)
+    ->middleware('auth')
+    ->name('home');

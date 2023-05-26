@@ -2,9 +2,9 @@
 
 namespace App\Repositories\DeviceRepository;
 
-use Illuminate\Support\Collection;
+use App\Repositories\RepositoryInterface;
 
-interface DeviceRepositoryInterface
+interface DeviceRepositoryInterface extends RepositoryInterface
 {
     public function saveAll(array $devices);
 }
