@@ -12,7 +12,7 @@ class DeviceList extends Component
 
     public $sortBy = 'ip_address';
     public $sortDirection = 'asc';
-    public $perPage = 5;
+    public $perPage = 20;
     protected $paginationTheme = 'bootstrap';
     public $filters = [];
 

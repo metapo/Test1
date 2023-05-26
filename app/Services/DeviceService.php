@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Repositories\DeviceRepository\DeviceRepository;
+use App\Repositories\DeviceRepository\DeviceRepositoryInterface;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 
@@ -10,7 +10,7 @@ class DeviceService
 {
     private ?Builder $devices = null;
 
-    public function __construct(protected DeviceRepository $deviceRepository)
+    public function __construct(protected DeviceRepositoryInterface $deviceRepository)
     {}
 
     private function loadAllDevices(): void

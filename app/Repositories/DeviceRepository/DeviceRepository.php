@@ -6,6 +6,7 @@ use App\Models\Device;
 
 use App\Repositories\RepositoryOptions;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
 
 class DeviceRepository implements DeviceRepositoryInterface
 {
@@ -23,7 +24,20 @@ class DeviceRepository implements DeviceRepositoryInterface
 
     public function getAll(): Builder
     {
-        $this->builder = Device::query();
+        $this->builder = Device::query()->select(['ip_address', 'mac', 'device_name', 'open_ports', 'created_at']);
         return $this->builder;
+    }
+
+    public function sort($query, $sortColumn, $sortOrder): Builder
+    {
+        switch ($sortColumn) {
+            case 'ip_address':
+                $sortColumn = DB::raw('INET_ATON(ip_address)');
+                break;
+            case 'mac':
+                $sortColumn = DB::raw('CONV(REPLACE(mac, ":", ""), 16, 10)');
+                break;
+        }
+        return $query->orderBy($sortColumn, $sortOrder);
     }
 }
