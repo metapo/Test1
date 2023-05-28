@@ -4,5 +4,5 @@ namespace App\Services\DeviceScanner;
 
 interface ScannerInterface
 {
-    public function scan() : array;
+    public function scan(string $ipRange, int $timeout) : array;
 }
